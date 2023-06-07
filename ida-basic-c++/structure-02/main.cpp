@@ -3,18 +3,26 @@
 // Classe de base
 class Forme {
 public:
-    virtual void afficher() = 0; 
-
-    virtual ~Forme() {} 
+    virtual void afficher() = 0; // se fera override. 
+    virtual ~Forme() {} // Virtual destructor
 };
 
 // Classe dérivée
 class Cercle : public Forme {
 public:
-    void afficher() override {
+    void afficher() override { 
         std::cout << "Je suis un cercle." << std::endl;
     }
 };
+
+"""
+struct vtable_cercle
+{
+  void (__fastcall *afficher_cercle)();
+  void (__fastcall *cleanup)();
+  void (__fastcall *destructor)();
+};
+"""
 
 // Classe dérivée
 class Carre : public Forme {
@@ -36,3 +44,4 @@ int main() {
 
     return 0;
 }
+
